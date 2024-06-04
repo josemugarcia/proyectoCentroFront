@@ -1,0 +1,30 @@
+<section class="especialidades p-3">
+  <div class="container mx-auto mt-14">
+    <!-- Mostrar mensaje si no hay citas -->
+    <div *ngIf="!citas || citas.length === 0" class="no-citas text-center text-xl">
+      No hay citas registradas actualmente
+    </div>
+    
+    <!-- Mostrar tabla si hay citas -->
+    <table *ngIf="citas && citas.length > 0">
+      <thead>
+        <tr>
+          <th>Nombre Medico</th>
+          <th>Especialidad Médico</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cita of citas">
+          <td>{{ cita.medico.nombreMedico }}</td>
+          <td>{{ cita.especialidad.nombreEspecialidad }}</td>
+          <td>{{ cita.fecha }}</td>
+          <td>{{ cita.hora }}</td>
+          <td><button (click)="cancelarCita(cita.idCita)">Cancelar Cita</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

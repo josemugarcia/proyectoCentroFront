@@ -1,0 +1,104 @@
+/* En tu archivo reservar-cita.component.css */
+select {
+    color: black; /* Cambia el color del texto del select */
+  }
+  
+  select option {
+    color: black; /* Cambia el color del texto de las opciones */
+  }
+  
+/* styles.css or reservar-cita.component.css */
+.btn {
+  transition: background-color 0.3s ease;
+}
+
+.btn-accent {
+  background-color: #1cbccf; /* Color del botón activo */
+  color: white;
+  cursor: pointer;
+}
+
+.btn-disabled {
+  background-color: #d3d3d3; /* Color del botón deshabilitado */
+  color: #888; /* Color del texto del botón deshabilitado */
+  cursor: not-allowed;
+}
+
+  
+.hora-select {
+ height: 30px; /* Ajusta el ancho según sea necesario */
+  /* Otros estilos personalizados si es necesario */
+}
+
+/* Estilos generales para selectores personalizados */
+.select.relative.flex.items-center {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select.relative.flex.items-center select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  padding: 8px 16px;
+  border: 2px solid #ccc;
+}
+
+.select.relative.flex.items-center .absolute {
+  position: absolute;
+  right: 16px;
+  pointer-events: none;
+}
+
+/* Estilos para mat-form-field personalizado */
+.custom-datepicker .mat-form-field-wrapper {
+  padding: 0;
+}
+
+.custom-datepicker .mat-form-field-flex {
+  background: transparent;
+  border: 2px solid;
+  border-color: inherit;
+  padding: 0 16px;
+}
+
+.custom-datepicker .mat-form-field-infix {
+  border: none;
+}
+
+.custom-datepicker .mat-datepicker-toggle {
+  margin: 0;
+}
+
+.custom-datepicker .mat-datepicker-toggle button {
+  margin: 0;
+  padding: 8px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.custom-datepicker .mat-form-field-outline {
+  display: none;
+}
+
+.custom-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.mat-form-field.appearance-legacy .mat-form-field-wrapper {
+  background-color: red;
+}

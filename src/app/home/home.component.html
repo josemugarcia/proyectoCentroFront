@@ -1,0 +1,189 @@
+<header class="py-8 lg:pt-6 lg:pb-14 p-2">
+    <div class="container mx-auto lg:relative flex flex-col lg:flex-row lg:justify-between gap-y-4 lg:gap-y-0">
+        <div class="flex justify-center lg:justify-normal">
+            <a href="/home/inicio"><img src="../../assets/header/logoHeader.svg" alt=""></a>
+        </div>
+        <div class="flex flex-col gap-y-4 lg:flex-row lg:gap-x-10 lg:gap-y-0">
+            <div class="flex justify-center items-center gap-x-2 lg:justify-normal">
+                <img src="../../assets/header/iconoMail.svg">
+                <div class="text-secondary">citas&#64;jamud.com</div>
+            </div>
+            <div class="flex justify-center items-center gap-x-2 lg:justify-normal">
+                <img src="../../assets/header/iconoTelefono.svg">
+                <div class="text-secondary">955 68 43 32</div>
+            </div>
+
+            <div class="flex justify-center items-center gap-x-2 lg:justify-normal">
+                <a href="#" (click)="logout()"><img src="../../assets/header/iconoCerrarSesion.svg"></a>
+                <div class="text-secondary">{{ nombreUsuario }}</div>
+
+                
+
+
+
+            </div>
+
+            <!-- nav Movil -->
+            <nav
+                class="mnav bg-white fixed w-[300px] top-0 h-screen -left-[300px] shadow-2xl lg:hidden transition-all duration-300 z-20">
+                <div
+                    class="mnav__close-btn bg-transparent w-8 h-8 relative -right-full top-8 flex justify-center items-center rounded-tr-lg rounded-br-lg cursor-pointer transition-all">
+                    <img src="../../assets/header/iconoMenuMovil.svg"
+                        class="mnav__close-btn-icon ri-arrow-right-s-line text-2xl hover: text-white">
+                </div>
+                <div class="px-12 flex flex-col gap-y-7 h-full">
+                    <a href="#"><img src="../../assets/header/logoHeader.svg" alt=""></a>
+                    <ul>
+                        <li><a href="/home/inicio"
+                                class="text-secondary hover:text-accent-default transition-all duration-200">Inicio</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="/home/blog"
+                                class="text-secondary hover:text-accent-default transition-all duration-200">Blog</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="/home/lista_medicos"
+                                class="text-secondary hover:text-accent-default transition-all duration-200">Nuestro
+                                Equipo</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="/home/especialidad"
+                                class="text-secondary hover:text-accent-default transition-all duration-200">Especialidades</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="/home/citas_usuario"
+                                class="text-secondary hover:text-accent-default transition-all duration-200">Mis Citas</a>
+                        </li>
+                    </ul>
+                    <form class="relative flex gap-x-[10px]">
+                        <label for="search-input" class="flex justify-center text-center">
+                            <img src="../../assets/header/iconoBuscar.svg">
+                        </label>
+                        <input type="text" name="" id="mnav-search-input" placeholder="Buscar..."
+                            class="outline-none w-[100px] focus:w-[180px] border-b-2 focus:border-b-2 focus:border-accent-default placeholder:italic placeholder:text-base transition-all duration-150">
+                    </form>
+                </div>
+            </nav>
+
+            <nav
+                class="hidden bg-white absolute w-full left-0 -bottom-[86px] shadow-custom1 h-16 rounded lg:flex lg:items-center lg:justify-between lg:px-[50px] animacion">
+                <ul class="flex gap-x-4">
+                    <li><a href="/home/inicio"
+                            class="border-r-2 pr-4 text-secondary hover:text-accent-default transition-all duration-200">Inicio</a>
+                    </li>
+                    <li><a href="/home/blog"
+                            class="border-r-2 pr-4 text-secondary hover:text-accent-default transition-all duration-200">Blog</a>
+                    </li>
+                    <li><a href="/home/lista_medicos"
+                            class="border-r-2 pr-4 text-secondary hover:text-accent-default transition-all duration-200">Nuestro
+                            Equipo</a></li>
+                    <li><a href="/home/especialidad"
+                            class="border-r-2 pr-4 text-secondary hover:text-accent-default transition-all duration-200">Especialidades</a>
+                    </li>
+                    <li><a href="/home/citas_usuario"
+                            class="border-r-2 pr-4 text-secondary hover:text-accent-default transition-all duration-200">Mis Citas</a>
+                    </li>
+                </ul>
+                <form class="relative flex gap-x-[10px]">
+                    <label for="search-input" class="flex justify-center text-center">
+                        <img src="../../assets/header/iconoBuscar.svg">
+                    </label>
+                    <input type="text" name="" id="mnav-search-input" placeholder="Buscar..."
+                        class="outline-none w-[100px] focus:w-[180px] border-b-2 focus:border-b-2 focus:border-accent-default placeholder:italic placeholder:text-base transition-all duration-150">
+                </form>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer class="footer pt-12 sm:pt-[150px]  mt-8 bg-gray-100]">
+    <div class="container mx-auto pb-12 sm:pb-[100px] ">
+        <div class="flex flex-col sm:flex-row gap-x-5 gap-y-10">
+            <div class="flex-1 w-[80%] mx-auto">
+                <a href=""> <img src="assets/header/logoHeader.svg" alt=""></a>
+                <p class="mt-[20px]">Ofrecemos una amplia gama de servicios médicos diseñados para atender tus
+                    necesidades.</p>
+                <div class="flex items-center gap-x-[6px] mt-[20px]">
+                    <img src="./assets/header/iconoMail.svg">
+                    <div class="text-secondary">citas&#64;jamud.com</div>
+                </div>
+
+                <div class="flex items-center gap-x-[6px] mt-[20px]">
+                    <img src="./assets/header/iconoTelefono.svg">
+                    <div class="text-secondary">955 68 43 32</div>
+                </div>
+
+                <div class="flex gap-[14px] text-[30px] mt-[20px]">
+                    <div
+                        class="p-[10px] rounded-[10px] shadow-custom2 text-accent-tertiary hover:text-accent-default cursor-pointer  transition-all">
+                        <i class="ri-facebook-circle-fill"></i>
+                    </div>
+                    <div
+                        class="p-[10px] rounded-[10px] shadow-custom2 text-accent-tertiary hover:text-accent-default cursor-pointer  transition-all">
+                        <i class="ri-instagram-fill"></i>
+                    </div>
+                    <div
+                        class="p-[10px] rounded-[10px] shadow-custom2 text-accent-tertiary hover:text-accent-default cursor-pointer  transition-all">
+                        <i class="ri-twitter-x-fill"></i>
+                    </div>
+                    <div
+                        class="p-[10px] rounded-[10px] shadow-custom2 text-accent-tertiary hover:text-accent-default cursor-pointer  transition-all">
+                        <i class="ri-linkedin-box-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 w-[80%] mx-auto">
+
+                <div class="flex gap-5 mt-[20px] ">
+                    <ul class="flex-1 flex flex-col gap-y-5">
+                        <li><a href="" class="hover:text-accent-default transition-all">Inicio</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Blog</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Nuestro Equipo</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Especialidades</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Contacto</a></li>
+                    </ul>
+                    <ul class="flex-1 flex flex-col gap-y-5">
+                        <li><a href="" class="hover:text-accent-default transition-all">Aviso legal</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Poltitica de privacidad</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Preguntas Frecuentes</a></li>
+                        <li><a href="" class="hover:text-accent-default transition-all">Politica de cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex-1 flex-col  w-[80%] mx-auto">
+
+                <div class="flex gap-5 mt-[20px] justify-between">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center border-b pb-[10px]">
+                            <div>Lunes - Jueves</div>
+                            <div class="text-accent-default font-medium">8:00 h - 21:00 h</div>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-[10px]">
+                            <div>Viernes</div>
+                            <div class="text-accent-default font-medium">8:00 h - 18:00 h</div>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-[10px]">
+                            <div>Sabado</div>
+                            <div class="text-accent-default font-medium">8:00 h - 15:00 h</div>
+                        </div>
+                        <div class="flex justify-between items-center border-b pb-[10px]">
+                            <div>Domingo</div>
+                            <div class="text-accent-default font-medium">Solo emergencia</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8 p-3 justify-center items-center">© 2024 JAMUD Todos los Derechos Reservados</div>
+
+    </div>
+
+
+</footer>
+

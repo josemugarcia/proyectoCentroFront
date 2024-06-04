@@ -1,0 +1,110 @@
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <img src="../../../assets/header/iconoMenuMovil.svg" class="w-[50%]" alt="">
+        </div>
+        <div class="search">
+            <label>
+                <div>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar Medico">
+                </div>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="details">
+        <div class="information_table">
+            <div class="cardHeader">
+                <h2>Listado de Médicos</h2>
+                <button class="bg-accent-default text-white p-2 rounded-lg" (click)="handleAddAction()">
+                    <mat-icon>add_circle</mat-icon> Añadir Medico</button>
+            </div>
+
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="nombreMedico">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Nombre </th>
+                    <td mat-cell *matCellDef="let medico" class="centered-text"> {{medico.nombreMedico}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="telefonoMedico">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Teléfono </th>
+                    <td mat-cell *matCellDef="let medico" class="centered-text">
+                        <div class="centered-content">
+                            {{medico.telefonoMedico}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edadMedico">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Edad </th>
+                    <td mat-cell *matCellDef="let medico" class="centered-text"> {{medico.edadMedico}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="especialidadNombre">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Especialidad </th>
+                    <td mat-cell *matCellDef="let medico" class="centered-text"> {{medico.especialidadNombre}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="imagenMedico">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Imagen </th>
+                    <td mat-cell *matCellDef="let medico" class="centered-text">
+                        <div class="centered-image">
+                            <img [src]="'../../../assets/medicos/' + medico.imagenMedico"
+                                alt="Imagen de {{medico.nombreMedico}}" width="90">
+                        </div>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef class="centered-text"> Acciones </th>
+                    <td mat-cell *matCellDef="let usuario" class="centered-text action-link">
+                        <div class="centered-content">
+                            <button mat-icon-button matTooltip="Edit" (click)="handleEditAction(usuario)">
+                                <mat-icon class="custom-color">edit</mat-icon>
+                            </button>
+                            <button mat-icon-button matTooltip="Delete" (click)="handleDeleteAction(usuario)">
+                                <mat-icon class="custom-color">delete</mat-icon>
+                            </button>
+                        </div>
+
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" class="centered-text"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="centered-text"></tr>
+
+            </table>
+
+            <!-- Paginador -->
+            <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"
+                [length]="totalItems">
+            </mat-paginator>
+
+
+
+            <!-- <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Telefono</th>
+                        <th>Edad</th>
+                        <th>Especialidad</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let medico of dataSource">
+                        <td>{{ medico.nombreMedico }}</td>
+                        <td>{{ medico.telefonoMedico }}</td>
+                        <td>{{ medico.edadMedico }}</td>
+                        <td>{{ medico.especialidadNombre }}</td>
+                    </tr>
+                </tbody>
+            </table>
+             -->
+        </div>
+    </div>
+</div>

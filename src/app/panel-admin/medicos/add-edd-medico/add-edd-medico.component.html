@@ -1,0 +1,63 @@
+<div class="custom-toolbar">
+    <div class="toolbar-content">
+      <span>{{ action }} Médico</span>
+      <div class="spacer"></div>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  <mat-dialog-content class="mat-typography">
+    <div class="contForm">
+      <form [formGroup]="medicoForm" (ngSubmit)="handleSubmit()" class="medico-form">
+        <div fxFlex fxLayout="column">
+          <label for="nombreMedico" class="text-accent-default">Nombre del Médico:</label>
+          <input type="text" id="nombreMedico" formControlName="nombreMedico" required>
+          <div *ngIf="medicoForm.get('nombreMedico')?.invalid && medicoForm.get('nombreMedico')?.touched">
+            <small class="text-red-600" *ngIf="medicoForm.get('nombreMedico')?.errors?.['required']">Nombre es requerido.</small>
+            <small class="text-red-600"  *ngIf="medicoForm.get('nombreMedico')?.errors?.['pattern']">Nombre no es válido.</small>
+          </div>
+          <div *ngIf="errorMessage" class="text-red-600">{{ errorMessage }}</div>
+        </div>
+        <div class="form-group mt-2">
+          <label for="especialidadId" class="text-accent-default">Especialidad:</label>
+          <select id="especialidadId" formControlName="especialidadId" required>
+            <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">
+              {{ especialidad.nombreEspecialidad }}
+            </option>
+          </select>
+          <div *ngIf="medicoForm.get('especialidadId')?.invalid && medicoForm.get('especialidadId')?.touched">
+            <small class="text-red-600"  *ngIf="medicoForm.get('especialidadId')?.errors?.['required']">Especialidad es requerida.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="telefonoMedico" class="text-accent-default">Teléfono:</label>
+          <input type="text" id="telefonoMedico" formControlName="telefonoMedico" required>
+          <div *ngIf="medicoForm.get('telefonoMedico')?.invalid && medicoForm.get('telefonoMedico')?.touched">
+            <small class="text-red-600"  *ngIf="medicoForm.get('telefonoMedico')?.errors?.['required']">Teléfono es requerido.</small>
+            <small class="text-red-600"  *ngIf="medicoForm.get('telefonoMedico')?.errors?.['pattern']">Teléfono no es válido.</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edadMedico" class="text-accent-default">Edad:</label>
+          <input type="number" id="edadMedico" formControlName="edadMedico" required>
+          <div *ngIf="medicoForm.get('edadMedico')?.invalid && medicoForm.get('edadMedico')?.touched">
+            <small class="text-red-600"  *ngIf="medicoForm.get('edadMedico')?.errors?.['required']">Edad es requerida.</small>
+          
+            <small class="text-red-600"  *ngIf="medicoForm.get('edadMedico')?.errors?.['pattern']">Edad no es válido (mayor o igual a 25 y menor de 70).</small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imagenMedico" class="text-accent-default">Imagen:</label>
+          <input type="file" id="imagenMedico" (change)="onFileChange($event)" required>
+          <div *ngIf="medicoForm.get('imagenMedico')?.invalid && medicoForm.get('imagenMedico')?.touched">
+            <small class="text-red-600"  *ngIf="medicoForm.get('imagenMedico')?.errors?.['required']">Imagen es requerida.</small>
+          </div>
+        </div>
+        <input type="hidden" id="idMedico" formControlName="idMedico" [value]="dialogData.data?.idMedico">
+        <button mat-raised-button color="primary" type="submit">{{ action }}</button>
+      </form>
+    </div>
+  </mat-dialog-content>
+  

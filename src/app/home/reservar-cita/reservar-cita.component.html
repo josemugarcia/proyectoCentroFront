@@ -1,0 +1,65 @@
+<section class="appoitment section">
+  <div class="container mx-auto">
+    <h2 class="h3 mb-5 xl:mb-[50px] mt-8 text-center">Información sobre tu cita <span class="text-accent-tertiary"></span></h2>
+    <form (ngSubmit)="onSubmit()" class="flex flex-col gap-y-5">
+      <div class="m-2 flex flex-col sm:flex-row gap-5">
+        <div class="select relative flex items-center">
+          <select class="appearance-none outline-none h-full w-full bg-transparent px-4 border-2" id="especialidad" (change)="onEspecialidadChange($event)">
+            <option value="">Selecciona una especialidad</option>
+            <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.nombreEspecialidad }}</option>
+          </select>
+        </div>
+        <div class="select relative flex items-center">
+          <select class="appearance-none outline-none h-full w-full bg-transparent px-4 border-2" id="medico" [(ngModel)]="cita.medico_id" name="medico">
+            <option value="">Selecciona un médico</option>
+            <option *ngFor="let medico of medicosFiltrados" [value]="medico.idMedico">{{ medico.nombreMedico }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="m-2 flex flex-col">
+        <div class="select relative flex items-center w-full">
+          <div class="select relative flex items-center w-full">
+            <mat-form-field class="w-full">
+              <mat-label>Selecciona una fecha</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="cita.fecha" name="fecha" [min]="fechaMinima" [max]="fechaMaxima" class="custom-input" style="background-color: transparent !important;">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="select relative flex items-center w-full mt-2">
+          <select class="appearance-none outline-none h-full w-full bg-transparent px-4 border-2 hora-select" id="hora" [(ngModel)]="cita.hora" name="hora" style="height: 100%; font-size: inherit;">
+            <option value="">Selecciona una hora</option>
+            <ng-container *ngFor="let dia of diasSemana">
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 1 && dia.nombre === 'Lunes - Jueves'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 2 && dia.nombre === 'Lunes - Jueves'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 3 && dia.nombre === 'Lunes - Jueves'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 4 && dia.nombre === 'Lunes - Jueves'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 5 && dia.nombre === 'Viernes'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 6 && dia.nombre === 'Sábado'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+              <ng-container *ngIf="cita.fecha && parseDate(cita.fecha).getDay() === 0 && dia.nombre === 'Domingo'">
+                <option *ngFor="let hora of dia.horas" [value]="hora">{{ hora }}</option>
+              </ng-container>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <button class="m-2 btn btn-lg self-start text-sm p-7 mx-auto"
+      [disabled]="!isFormValid()" [ngClass]="{'btn-accent': isFormValid(), 'btn-disabled': !isFormValid()}">
+      Reservar Cita
+    </button>
+  </form>
+</div>
+</section>

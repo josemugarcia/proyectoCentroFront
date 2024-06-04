@@ -1,0 +1,22 @@
+<section class="especialidades">
+  <div class="container mx-auto mt-14">
+    <h2 class="blog__title h2 text-center mb-[50px]">Especialidades</h2>
+    <div *ngIf="dataSource && dataSource.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:border-2 mx-auto w-[80%] md:w-full animacion">
+      <div *ngFor="let especialidad of dataSource"
+        class="max-w-[420px] shadow-custom2 rounded-[10px] overflow-hidden cursor-pointer group">
+        <div class="relative overflow-hidden">
+          <img class="group-hover:scale-110 transition-all duration-500 object-cover w-full h-52"
+            [src]="especialidad.image" [alt]="especialidad.nombreEspecialidad">
+        </div>
+        <div class="px-5 pt-3 pb-4 bg-[#F4F4F4]">
+          <h1 class="mb-[10px] font-semibold text-center text-accent-default items-center">
+            {{ especialidad.nombreEspecialidad }}
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!dataSource || dataSource.length === 0"> <!-- Maneja el caso donde dataSource no tiene datos -->
+      <p>No se encontraron especialidades.</p>
+    </div>
+  </div>
+</section>

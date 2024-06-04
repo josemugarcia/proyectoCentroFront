@@ -1,0 +1,72 @@
+<div class="custom-toolbar">
+    <div class="toolbar-content">
+        <span>Editar Usuario</span>
+        <div class="spacer"></div>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography">
+    <div class="contForm">
+        <form [formGroup]="usuarioForm" (ngSubmit)="handleSubmit()"  class="medico-form" (keydown)="onKeydown($event)">
+            <div fxFlex fxLayout="column">
+                <label for="nombre" class="text-accent-default">Nombre:</label>
+                <input type="text" id="nombre" formControlName="nombre" required>
+
+                <div *ngIf="usuarioForm.get('nombre')?.invalid && usuarioForm.get('nombre')?.touched">
+                    <small class="text-red-600" *ngIf="usuarioForm.get('nombre')?.errors?.['required']">Nombre es
+                        requerido.</small>
+                    <small class="text-red-600" *ngIf="usuarioForm.get('nombre')?.errors?.['pattern']">Nombre no es
+                        válido.</small>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="telefono" class="text-accent-default mt-4">Teléfono:</label>
+                <input type="text" id="telefono" formControlName="telefono" required>
+                <div *ngIf="usuarioForm.get('telefono')?.invalid && usuarioForm.get('telefono')?.touched">
+                    <small class="text-red-600" *ngIf="usuarioForm.get('telefono')?.errors?.['required']">Teléfono es
+                        requerido.</small>
+                    <small class="text-red-600" *ngIf="usuarioForm.get('telefono')?.errors?.['pattern']">Teléfono no es
+                        válido.</small>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="email" class="text-accent-default">Email:</label>
+                <input type="text" id="email" formControlName="email" required>
+                <div *ngIf="usuarioForm.get('email')?.invalid && usuarioForm.get('email')?.touched">
+                    <small class="text-red-600" *ngIf="usuarioForm.get('email')?.errors?.['required']">Email es
+                        requerido.</small>
+                    <small class="text-red-600" *ngIf="usuarioForm.get('email')?.errors?.['pattern']">Email no es
+                        válido.</small>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="password" class="text-accent-default mt-4">Nueva Contraseña:</label>
+                <div class="password-input-container">
+                    <input class="p-2 rounded-xl border" matInput [type]="showPassword ? 'text' : 'password'"
+                        id="password" formControlName="password" placeholder="Contraseña">
+                    <button mat-icon-button (click)="togglePasswordVisibility('password', $event)">
+                        <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+                    </button>
+                </div>
+                <mat-error *ngIf="usuarioForm.get('password')?.invalid && usuarioForm.get('password')?.touched">
+                    <span class="text-red-600" *ngIf="usuarioForm.get('password')?.errors?.['required']">Contraseña es
+                        requerida.</span>
+                </mat-error>
+            </div>
+
+           
+
+            <div *ngIf="errorMessage" class="text-red-600">{{ errorMessage }}</div>
+            <input type="hidden" id="id" formControlName="id" [value]="dialogData.data?.id">
+            <button mat-raised-button color="primary" type="submit">Actualizar</button>
+        </form>
+    </div>
+</mat-dialog-content>

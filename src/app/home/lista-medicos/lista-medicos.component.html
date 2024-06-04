@@ -1,0 +1,40 @@
+<section class="medicos">
+  <div class="container mx-auto mt-14">
+    <h2 class="blog__title h2 text-center mb-[50px]">Nuestro Equipo</h2>
+    <div *ngIf="dataSource && dataSource.length > 0"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 xl:border-2 mx-auto w-[80%] md:w-full animacion">
+      <div *ngFor="let lista_medicos of dataSource"
+        class="max-w-[420px] shadow-custom2 rounded-[10px] overflow-hidden cursor-pointer group">
+
+        <div class="relative overflow-hidden">
+          <img class="group-hover:scale-110 transition-all duration-500 object-cover w-full h-52"
+            [src]="lista_medicos.image" [alt]="lista_medicos.image">
+        </div>
+        <div class="px-5 pt-3 pb-4"></div>
+        <div class="px-5 pt-3 pb-4">
+          <h4 class="h4 mb-[10px] text-center">Dr {{ lista_medicos.nombreMedico }}</h4>
+          <p class="font-medium uppercase tracking-[2.24px] text[#9ab4b7] mb-[20px] text-center">
+            {{ lista_medicos.especialidadNombre }}</p>
+
+          <div class="flex items-center text-[30px] gap-x-5 text-accent-tertiary w-[70%] mx-auto justify-between">
+            <a href="#" class="social-icon cursor-pointer hover:text-accent-default transition-all">
+              <img src="../../../assets/iconosRedesSociales/facebook-circle-fill 3.svg" alt="" width="40" height="40">
+            </a>
+            <a href="#" class="social-icon cursor-pointer hover:text-accent-default transition-all">
+              <img src="../../../assets/iconosRedesSociales/instagram-fill 1.svg" alt="" width="40" height="40">
+            </a>
+            <a href="#" class="social-icon cursor-pointer hover:text-accent-default transition-all">
+              <img src="../../../assets/iconosRedesSociales/youtube-fill 1.svg" alt="" width="40" height="40">
+            </a>
+            <a href="#" class="social-icon cursor-pointer hover:text-accent-default transition-all">
+              <img src="../../../assets/iconosRedesSociales/linkedin-box-fill 2.svg" alt="" width="40" height="40">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!dataSource || dataSource.length === 0"> <!-- Maneja el caso donde dataSource no tiene datos -->
+      <p>No se encontraron especialidades.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+<section class="bg-gray-50 min-h-screen flex items-center justify-center">
+  <!-- login container -->
+  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+    <!-- form -->
+    <div class="px-8 md:px-16">
+      <h2 class="font-bold text-2xl text-[#1cbccf]">Registro de Usuario</h2>
+
+      <form [formGroup]="signupForm" class="flex flex-col gap-4" (ngSubmit)="handleSubmit()" (keydown)="onKeydown($event)">
+
+        <input class="p-2 mt-8 rounded-xl border" matInput type="text" name="nombre" formControlName="nombre"
+          placeholder="Nombre" required>
+
+        <mat-error *ngIf="signupForm.controls.nombre.touched && signupForm.controls.nombre.invalid">
+          <span class="text-red-600" *ngIf="signupForm.controls.nombre.errors.required">El nombre es obligatorio</span>
+          <span class="text-red-600" *ngIf="signupForm.controls.nombre.errors.pattern">El nombre es inválido</span>
+        </mat-error>
+
+        <input class="p-2 rounded-xl border" matInput type="number" name="telefono" formControlName="telefono"
+          placeholder="Telefono" required>
+        <mat-error *ngIf="signupForm.controls.telefono.touched && signupForm.controls.telefono.invalid">
+          <span class="text-red-600" *ngIf="signupForm.controls.telefono.errors.required">El telefono es
+            obligatorio</span>
+          <span class="text-red-600" *ngIf="signupForm.controls.telefono.errors.pattern">El telefono es inválido</span>
+        </mat-error>
+
+        <input class="p-2 rounded-xl border" matInput type="email" name="email" formControlName="email"
+          placeholder="Email" required>
+        <mat-error *ngIf="signupForm.controls.email.touched && signupForm.controls.email.invalid">
+          <span class="text-red-600" *ngIf="signupForm.controls.email.errors.required">El email es
+            obligatorio</span>
+          <span class="text-red-600" *ngIf="signupForm.controls.email.errors.pattern">El email es inválido</span>
+        </mat-error>
+
+        <div class="password-input-container">
+          <input class="p-2 rounded-xl border" matInput [type]="showPassword ? 'text' : 'password'" name="password"
+            formControlName="password" placeholder="Contraseña" required>
+        
+          <button mat-icon-button (click)="togglePasswordVisibility('password', $event)">
+            <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </div>
+        
+        <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
+          <span class="text-red-600" *ngIf="signupForm.controls.password.errors.required">La contraseña es
+            obligatoria</span>
+          <span class="text-red-600" *ngIf="signupForm.controls.password.errors.pattern">La contraseña debe tener entre 4 y 8 caracteres</span>
+        </mat-error>
+
+        <div style="position: relative;">
+          <input class="p-2 rounded-xl border" matInput [type]="showConfirmPassword ? 'text' : 'password'"
+            name="confirmPassword" formControlName="confirmPassword" placeholder="Confirmar contraseña" required>
+
+          <button mat-icon-button (click)="togglePasswordVisibility('confirmPassword', $event)"
+            style="position: absolute; right: 1px; top: 50%; transform: translateY(-50%);">
+            <mat-icon>{{ showConfirmPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        </div>
+
+        <mat-error *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid">
+          <span class="text-red-600" *ngIf="signupForm.controls.confirmPassword.errors.required">La contraseña es
+            obligatoria</span>
+        </mat-error>
+        <mat-hint *ngIf="validateSubmit() && !(signupForm.controls.confirmPassword.invalid)">
+          <span class="text-red-600">Las contraseñas no coinciden</span>
+        </mat-hint>
+        <button type="submit" [disabled]="validateSubmit() || !(signupForm.valid && signupForm.dirty)"
+        class="bg-[#1cbccf] rounded-xl text-white py-2 hover:scale-105 duration-300" (click)="openSpinner()">
+        Registrarse
+      </button>
+      
+      </form>
+
+      <div class="mt-3 text-xs flex justify-between items-center text-[#1cbccf]">
+        <p>¿Tienes ya una cuenta?</p>
+        <a routerLink="/login" href="/login" class="py-2 px-5 bg-white border rounded-xl"  (click)="openSpinner()" >Inicia Sesion</a>
+      </div>
+    </div>
+  </div>
+</section>
