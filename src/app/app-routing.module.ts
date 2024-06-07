@@ -14,7 +14,9 @@ import { ListaMedicosComponent } from './home/lista-medicos/lista-medicos.compon
 import { ReservarCitaComponent } from './home/reservar-cita/reservar-cita.component';
 import { UsersComponent } from './panel-admin/users/users.component';
 import { CitasComponent } from './panel-admin/citas/citas.component';
-import { CitasUsuarioComponent } from './home/citas-usuario/citas-usuario.component'; // Importar el componente ReservarCitaComponent
+import { CitasUsuarioComponent } from './home/citas-usuario/citas-usuario.component';
+import { FaqComponent } from './home/faq/faq.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro_usuario', component: RegistroUsuarioComponent },
@@ -22,6 +24,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
+    data: { roles: ['user'] },
     children: [
       { path: 'inicio', component: InicioComponent },
       { path: 'blog', component: BlogComponent },
@@ -29,12 +32,14 @@ const routes: Routes = [
       { path: 'lista_medicos', component: ListaMedicosComponent },
       { path: 'reservar_cita', component: ReservarCitaComponent },
       { path: 'citas_usuario', component: CitasUsuarioComponent },
+      { path: 'faq', component: FaqComponent },
     ],
   },
   {
     path: 'panel_admin',
     component: PanelAdminComponent,
     canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'medicos', component: MedicosComponent },

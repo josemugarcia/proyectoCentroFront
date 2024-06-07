@@ -46,6 +46,7 @@ import { CitasComponent } from './panel-admin/citas/citas.component';
 import { DeleteCitaConfirmationComponent } from './panel-admin/citas/delete-cita-confirmation/delete-cita-confirmation.component';
 import { CitasUsuarioComponent } from './home/citas-usuario/citas-usuario.component';
 import { ConfirmDialogComponent } from './home/citas-usuario/confirm-dialog/confirm-dialog.component';
+import { FaqComponent } from './home/faq/faq.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import { ConfirmDialogComponent } from './home/citas-usuario/confirm-dialog/conf
     DeleteCitaConfirmationComponent,
     CitasUsuarioComponent,
     ConfirmDialogComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,

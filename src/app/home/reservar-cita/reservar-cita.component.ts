@@ -36,7 +36,6 @@ export class ReservarCitaComponent implements OnInit {
     { nombre: 'Lunes - Jueves', horas: this.generarHoras(8, 21) },
     { nombre: 'Viernes', horas: this.generarHoras(8, 18) },
     { nombre: 'Sábado', horas: this.generarHoras(8, 15) },
-    { nombre: 'Domingo', horas: ['Solo emergencia'] }
   ];
 
   constructor(
@@ -101,7 +100,7 @@ export class ReservarCitaComponent implements OnInit {
       const month = selectedDate.getMonth() + 1;
       const day = selectedDate.getDate();
       this.cita.fecha = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-
+  
       this.citaService.addNewCita(this.cita).subscribe(
         (response: any) => {
           console.log('Cita registrada exitosamente', response);
@@ -114,12 +113,26 @@ export class ReservarCitaComponent implements OnInit {
         },
         (error: any) => {
           console.error('Error registrando la cita', error);
+          if (error.status === 409) { // Si el error es 409
+            this.toast.error({
+              detail: 'La fecha no está disponible.',
+              summary: 'Error al reservar cita',
+              duration: 5000
+            });
+          } else {
+            this.toast.error({
+              detail: 'Ha ocurrido un error. Por favor, inténtalo de nuevo más tarde.',
+              summary: 'Error al reservar cita',
+              duration: 5000
+            });
+          }
         }
       );
     } else {
       console.error('No se pudo obtener el ID del usuario.');
     }
   }
+  
 
   openSpinner() {
     this.spinnerService.open();
