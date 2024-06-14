@@ -5,45 +5,35 @@
     <div class="px-8 md:px-16">
       <h2 class="font-bold text-2xl text-[#1cbccf]">Acceso Usuario</h2>
 
-      <form [formGroup]="loginForm" class="flex flex-col gap-4" (ngSubmit)="handleSubmit()" (keydown)="onKeydown($event)" >
-        <input class="p-2 mt-8 rounded-xl border" matInput type="email" name="email" formControlName="email"
-          placeholder="Email" required>
+      <form [formGroup]="loginForm" class="flex flex-col gap-4" (ngSubmit)="handleSubmit()" (keydown)="onKeydown($event)">
+        <input class="p-2 mt-8 rounded-xl border" matInput type="email" name="email" formControlName="email" placeholder="Email" required>
         <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
           <span class="text-red-600">El email es obligatorio</span>
         </mat-error>
         <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('pattern')">
-          <span class="text-red-600">El email es inválido</span>
+          <span class="text-red-600">El campo deber ser de tipo email</span>
         </mat-error>
-        <div style="position: relative;">
-          <input class="p-2 rounded-xl border" matInput [type]="showPassword ? 'text' : 'password'" name="password"
-            formControlName="password" placeholder="Contraseña" required>
-
-          <button mat-icon-button (click)="togglePasswordVisibility('password', $event)"
-            style="position: absolute; right: 1px; top: 50%; transform: translateY(-50%);">
-            <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
-          </button>
-
-         
-
+        <div class="relative">
+          <input class="p-2 w-full rounded-xl border" matInput [type]="showPassword ? 'text' : 'password'" name="password" formControlName="password" placeholder="Contraseña" required>
         </div>
         <mat-error *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
           <span class="text-red-600">La contraseña es obligatoria</span>
         </mat-error>
-        <button type="submit" [disabled]="!(loginForm.valid && loginForm.dirty)"
-        style="background-color: #1cbccf; color: white; border-radius: 0.5rem; padding: 0.5rem 1rem; cursor: pointer;"
-        class="hover:scale-105 duration-300" (click)="openSpinner()">
-        Acceder
-     </button>
-        
+        <div class="flex items-center p-2">
+          <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility()" class="mr-2">
+          <label for="showPassword" class="text-sm text-gray-600">Mostrar contraseña</label>
+        </div>
+       
+        <button type="submit" [disabled]="!(loginForm.valid && loginForm.dirty)" style="background-color: #1cbccf; color: white; border-radius: 0.5rem; padding: 0.5rem 1rem; cursor: pointer;" class="hover:scale-105 duration-300" (click)="openSpinner()">
+          Acceder
+        </button>
       </form>
 
       <div class="mt-3 text-xs flex justify-between items-center text-[#1cbccf]">
         <p>¿Todavía no te has registrado?</p>
-        <a routerLink="/registro_usuario" href="/registro_usuario" class="py-2 px-5 bg-white border rounded-xl"
-          (click)="openSpinner()">
+        <a routerLink="/registro_usuario" href="/registro_usuario" class="py-2 px-5 ml-2 bg-white border rounded-xl" (click)="openSpinner()">
           Registrarse
         </a>
-
       </div>
     </div>
   </div>

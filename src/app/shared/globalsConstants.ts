@@ -3,7 +3,7 @@ export class GlobalConstants {
     public static genericError: string = "Algo salió mal, por favor inténtalo de nuevo más tarde";
   
     //todos
-    public static nombre: string = "^[a-záéíóúÁÉÍÓÚüÜ]+$";
+    public static nombre: string = "^[a-zA-ZáéíóúÁÉÍÓÚüÜ_-]+$";
     public static email: string = "[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\\.[a-z]{2,3}";
     public static telefono: string = "^[0-9]{9,9}$";
 

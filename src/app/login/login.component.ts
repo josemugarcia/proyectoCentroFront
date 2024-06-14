@@ -85,13 +85,8 @@ export class LoginComponent {
     );
   }
 
-  togglePasswordVisibility(field: string, event: Event): void {
-    if (field === 'password') {
-      this.showPassword = !this.showPassword;
-    }
-    if (event) {
-      event.preventDefault();
-    }
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   openSpinner() {

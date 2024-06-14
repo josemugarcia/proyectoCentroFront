@@ -1,0 +1,10 @@
+.error-message {
+  display: block;
+  color: red;
+  font-size: 0.875rem; /* Ajusta el tamaño de fuente según sea necesario */
+  line-height: 1rem; /* Ajusta la altura de línea según sea necesario */
+  height: 1rem; /* Mantén una altura fija para evitar el cambio de tamaño */
+  overflow: hidden; /* Oculta el texto que desborda */
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+}

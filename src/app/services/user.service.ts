@@ -60,8 +60,11 @@ export class UserService {
       estado: checked, // Supongo que el estado se representa como un booleano en el backend
     };
     return this.httpClient.post(
-      'http://localhost:8081/user/updateEstado',
-      request
+      this.url + '/user/updateEstado', // Usamos la URL de apiUrl definida en environment
+      request,
+      {
+        headers: new HttpHeaders().set('Content-Type', 'application/json'),
+      }
     );
   }
 

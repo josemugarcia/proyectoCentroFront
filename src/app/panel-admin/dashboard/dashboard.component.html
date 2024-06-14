@@ -14,35 +14,37 @@
     <!-- ======================= Cards ================== -->
     <div class="cardBox">
         <div class="card">
-            <div>
-                <div class="numbers">{{ usersCount }}</div>
-                <div class="cardName">Usuarios</div>
-            </div>
-            <div class="iconBx"></div>
+            <a href="/panel_admin/users">
+                <div>
+                    <div class="numbers">{{ usersCount }}</div>
+                    <div class="cardName">Usuarios</div>
+                </div>
+            </a>
         </div>
-
         <div class="card">
-            <div>
-                <div class="numbers">{{ medicosCount }}</div>
-                <div class="cardName">Médicos</div>
-            </div>
-            <div class="iconBx"></div>
+            <a href="/panel_admin/medicos">
+                <div>
+                    <div class="numbers">{{ medicosCount }}</div>
+                    <div class="cardName">Médicos</div>
+                </div>
+            </a>
         </div>
-
         <div class="card">
-            <div>
-                <div class="numbers">{{ especialidadesCount }}</div>
-                <div class="cardName">Especialidades</div>
-            </div>
-            <div class="iconBx"></div>
+            <a href="/panel_admin/citas">
+                <div>
+                    <div class="numbers">{{ citasCount }}</div>
+                    <div class="cardName">Citas</div>
+                </div>
+            </a>
         </div>
-
+       
         <div class="card">
-            <div>
-                <div class="numbers">{{ citasCount }}</div>
-                <div class="cardName">Citas</div>
-            </div>
-            <div class="iconBx"></div>
+            <a href="/panel_admin/dashboard">
+                <div>
+                    <div class="numbers">{{ especialidadesCount }}</div>
+                    <div class="cardName">Especialidades</div>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -68,7 +70,7 @@
                     <td mat-cell *matCellDef="let usuario" class="centered-text">
                         <div class="centered-content">
                             {{usuario.email}}
-                        </div>  
+                        </div>
                     </td>
                 </ng-container>
 
